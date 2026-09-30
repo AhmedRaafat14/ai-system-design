@@ -28,12 +28,26 @@ Level 4: Multi-agent (orchestrator + parallel subagents)
 - The task is valuable enough to pay for exploration (tokens, latency)
 - You can sandbox execution and define stopping conditions
 
+### Code as the orchestration layer
+
+For agents juggling many tools, having the model write and run code that calls
+those tools in a sandbox often beats emitting one tool call per turn: loops,
+branching, and data passing stay in code instead of the context window, which
+cuts tokens and round-trips. Reach for it when tools compose and execution can
+be sandboxed.
+
 ### Framework caution
 
 Frameworks (LangGraph, CrewAI, etc.) speed up the start but add abstraction
 layers that obscure prompts and control flow, making debugging harder.
 Start with direct API calls; if you adopt a framework, make sure you can
 inspect every prompt and own the loop (retry, pause, terminate logic).
+
+The 12-Factor Agents methodology captures the same discipline: own your prompts,
+context window, and control flow; keep tool calls as structured outputs; unify
+execution and business state; launch, pause, and resume over simple APIs;
+compact errors back into context; and prefer small, focused agents over one
+sprawling loop.
 
 ---
 

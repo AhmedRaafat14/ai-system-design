@@ -4,6 +4,12 @@
 
 - Use native structured outputs / constrained decoding for anything a
   machine will read: tool calls, extraction, classification, routing.
+  Provider-native structured outputs enforce a JSON schema by masking
+  invalid tokens; self-hosted serving gets the same guarantee from a
+  constrained-decoding backend (XGrammar, Outlines, llguidance).
+- Constrain the output envelope, not the thinking. Forcing a schema onto the
+  model's reasoning field degrades quality; let it reason freely, then emit
+  the structured object.
 - Schema conformance is not correctness. Validate business rules
   server-side: date ranges, ID existence, enum semantics, cross-field
   consistency.

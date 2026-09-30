@@ -7,7 +7,7 @@ specialized systems, and governance.
 
 This guide started from practitioner discussions (Reddit engineering
 threads) and was validated and expanded against primary sources: Anthropic
-and OpenAI engineering guides, the OWASP Top 10 for LLM Applications (2025),
+and OpenAI engineering guides, the OWASP Top 10 for LLM Applications,
 the 12-Factor Agents methodology, OpenTelemetry GenAI conventions, academic
 work on retrieval and long context, and current regulation (EU AI Act as
 amended by the 2026 Digital Omnibus). Full references at the end.

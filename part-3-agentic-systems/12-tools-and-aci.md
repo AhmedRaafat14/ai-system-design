@@ -9,18 +9,34 @@ from building tools for Claude:
   Build a handful of thoughtful tools for high-impact workflows that match
   your [evals](../part-4-production-engineering/21-evaluation-strategy.md), then expand. Every exposed tool definition costs tokens and
   attention.
+- **Namespace related tools** with consistent prefixes (asana_search,
+  asana_create) so the model picks the right one among overlapping options.
 - **Consolidate multi-step operations** into single tools where the steps
   always go together (schedule_event that also checks availability, not
   three chained primitives).
 - **Return token-efficient, high-signal responses.** A search_contacts tool
   beats list_all_contacts; do not make the agent brute-force through
-  irrelevant output. Support concise vs detailed response formats.
+  irrelevant output. Support concise vs detailed response formats, paginate or
+  truncate large results with a clear signal when output was cut, and return
+  semantic names rather than opaque IDs.
 - **Make errors instructive.** A good error tells the model how to correct
   the call, then gets compacted into context (not a raw stack trace).
 - **Poka-yoke the arguments.** Design parameters so misuse is hard (require
   absolute paths, enums instead of free strings, explicit idempotency_key).
 - Iterate on tool descriptions using real transcripts; test tools with the
   agent in the loop, not just unit tests.
+
+### Scaling to many tools
+
+- **Expose tools as code APIs and let the agent write code to call them**
+  ("code mode"): the model imports only the definitions it needs and passes
+  data between calls in code, keeping large catalogs and intermediate results
+  out of context for order-of-magnitude token savings.
+- **Load tool definitions on demand.** Let the agent search a catalog and pull
+  in only the schemas a task needs instead of putting every definition in the
+  prompt.
+- **Design for parallel tool calls.** The model may invoke several tools in one
+  turn, so keep concurrently-run tools independent and idempotent.
 
 ### Tool contract
 

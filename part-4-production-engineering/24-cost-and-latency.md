@@ -6,8 +6,8 @@
   tools, reference docs) + variable suffix. Providers discount cached
   tokens heavily: Anthropic documents up to 90% cost and up to 85% latency
   reduction on long cached prompts (cache reads about 10% of input price);
-  OpenAI caches automatically at roughly 50% cost reduction. This is often
-  the single largest lever in [RAG](../part-2-core-techniques/08-rag-system-design.md) and agent systems.
+  OpenAI also applies a substantial automatic cached-input discount. This is
+  often the single largest lever in [RAG](../part-2-core-techniques/08-rag-system-design.md) and agent systems.
 - **Model routing / cascades**: default to a small model, escalate to a
   large one on low confidence or hard routes; use batch APIs (typically
   about 50% cheaper) for offline work.
@@ -19,7 +19,7 @@
   authorized content. Include auth scope and tenant in the cache key or
   skip it.
 - Track spend per route, per tenant, per feature, and alert on anomalies
-  (see [LLM10](20-security.md)).
+  (see [Unbounded Consumption](20-security.md)).
 
 ---
 

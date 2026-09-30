@@ -10,7 +10,7 @@ small self-hosted or cheap-API models for high-volume narrow tasks.
 |---|---|---|
 | Data residency / sovereignty | Provider has an in-region or sovereign offering | Regulator or client requires on-prem / in-country (common in Gulf, finance, government) |
 | Volume economics | Low or spiky volume (you pay only for use) | Sustained high volume on a narrow task where a small model suffices |
-| Capability needed | Frontier reasoning, long context, tool use | Task is narrow enough for a tuned 7B-70B class model |
+| Capability needed | Frontier reasoning, long context, tool use | An open-weight model covers the task (gpt-oss, Qwen3, DeepSeek, Llama), from a small tuned model to a large mixture-of-experts |
 | Latency control | Standard SLOs acceptable | Hard real-time budgets (voice), no network egress |
 | Ops maturity | Small team, no GPU/on-call capacity | Existing infra team, GPU access, serving experience |
 | Model lifecycle | You accept provider deprecations (mitigate via gateway) | You need a frozen model for years ([compliance](../part-7-product-and-organization/34-governance-and-compliance.md), reproducibility) |

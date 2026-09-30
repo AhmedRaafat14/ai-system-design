@@ -39,6 +39,12 @@ Every example defines expected behavior:
 3. **Human review** for high-stakes flows and for periodically re-anchoring
    the automated graders.
 
+Do not build graders from scratch: promptfoo, OpenAI Evals, and DeepEval
+cover deterministic and model-graded checks; Ragas scores retrieval on
+faithfulness, answer relevance, and context precision and recall; Braintrust,
+LangSmith, and Phoenix add managed datasets, dashboards, and trace-linked
+scoring.
+
 ### Agent-specific evaluation
 
 Judge the **end state** (did the task actually get done in the environment)
@@ -60,8 +66,9 @@ Prompts, model or provider version, retrieval/index config, [embedding](../part-
 model, chunking logic, tool schemas or permissions, workflow transitions,
 guardrails, [fine-tuned](../part-2-core-techniques/10-fine-tuning.md) checkpoints. Gate deploys in CI on the regression
 suite, then verify with shadow or canary traffic. Convert every production
-incident into a regression case.
+incident into a regression case. This is eval-driven development: the
+regression suite is the release gate, not an afterthought.
 
 ---
 
-**Prev:** [20. Security (mapped to OWASP Top 10 for LLM Applications, 2025)](20-security.md) · [Reading list](../README.md) · **Next:** [22. Observability](22-observability.md)
+**Prev:** [20. Security (mapped to the OWASP Top 10 for LLM Applications)](20-security.md) · [Reading list](../README.md) · **Next:** [22. Observability](22-observability.md)

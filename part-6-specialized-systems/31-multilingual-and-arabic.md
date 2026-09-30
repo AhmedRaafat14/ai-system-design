@@ -20,9 +20,12 @@ generic best practices need adjustments:
   technical terms), which is the norm in real Gulf traffic.
 - **Generation checks**: RTL and mixed-direction rendering, Arabic-Indic vs
   Western numerals, citation formatting.
-- **Regional models exist** (Arabic-centric families from Gulf institutions
-  and labs) alongside multilingual frontier models; evaluate current
-  versions on your own data instead of assuming either direction wins.
+- **Regional models exist** (Arabic-centric families such as Fanar, ALLaM,
+  Jais, Falcon-Arabic, AceGPT, and dialect-focused ones like Atlas-Chat)
+  alongside multilingual frontier models; evaluate current versions on your
+  own data, using Arabic leaderboards and benchmarks (OALL, AraLingBench,
+  DialectalArabicMMLU) as a starting point rather than assuming either
+  direction wins.
 - **LLM-as-judge calibration is weaker outside English**: spot-check judges
   with native-speaker review before trusting automated scores.
 - **Quantization and distillation hit low-resource languages harder** than

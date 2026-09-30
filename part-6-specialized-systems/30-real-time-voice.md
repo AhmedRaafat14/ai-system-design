@@ -6,17 +6,21 @@ Voice agents are a systems-latency problem first and a model-quality
 problem second.
 
 - **Pipeline**: VAD (voice activity detection) → streaming STT → LLM →
-  streaming TTS, or an end-to-end speech-to-speech model. Pipelines give
-  control, [observability](../part-4-production-engineering/22-observability.md), and component-level swaps; speech-to-speech cuts
-  latency and preserves prosody but reduces control. Most production
-  systems still run pipelines.
+  streaming TTS, or an end-to-end speech-to-speech model (realtime APIs such
+  as OpenAI's Realtime API and Gemini Live make speech-to-speech
+  production-viable). Pipelines give control, [observability](../part-4-production-engineering/22-observability.md), and
+  component-level swaps; speech-to-speech cuts latency and preserves prosody
+  but reduces control. Pick on whether you need component observability or
+  the lowest latency.
 - **Latency budget**: target well under a second voice-to-voice; humans
   read silence beyond that as failure. Stream every stage: partial STT into
   the LLM, first LLM sentence into TTS while the rest generates. Measure
   p95 voice-to-voice, not averages.
 - **Turn-taking**: endpointing (when has the caller finished?) and barge-in
   (caller interrupts playback: stop TTS, cancel generation, keep state)
-  make or break the experience. Test with real interruption patterns.
+  make or break the experience. Prefer semantic turn detection (semantic
+  VAD that predicts utterance completion from meaning and prosody) over
+  fixed silence thresholds, and test with real interruption patterns.
 - **Reality of audio**: telephony codecs, background noise, code-switching,
   and dialects destroy lab WER numbers. Evaluate STT per dialect and per
   channel (phone vs web) on your own recordings.

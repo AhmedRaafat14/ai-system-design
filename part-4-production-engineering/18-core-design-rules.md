@@ -41,7 +41,7 @@ and 12-Factor Agents:
 ### Enforce hard execution budgets
 
 Never let a loop run unbounded. Unbounded consumption is an [OWASP](20-security.md) Top 10
-risk (LLM10), not just a cost problem: it is also a denial-of-wallet attack
+risk (Unbounded Consumption), not just a cost problem: it is also a denial-of-wallet attack
 surface.
 
 ```python

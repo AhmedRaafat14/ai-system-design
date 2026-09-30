@@ -11,7 +11,10 @@
 - **Reasoning**: for hard tasks with non-reasoning models, ask for explicit
   steps before the answer. With reasoning models, do not force chain-of-
   thought in the prompt; control effort via the model's reasoning settings
-  and spend the tokens where evals show they pay.
+  (extended, interleaved, and adaptive thinking) and spend the tokens where
+  evals show they pay. For agentic tool loops, prefer adaptive thinking over a
+  fixed budget, and interleaved thinking so the model can reconsider between
+  tool calls.
 - **Decompose.** Several small prompts with deterministic checks between
   them beat one mega-prompt. This is what the workflow patterns in §11
   formalize.

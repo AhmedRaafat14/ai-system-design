@@ -53,7 +53,7 @@ connect.
 - [17. Reference Architecture](part-4-production-engineering/17-reference-architecture.md)
 - [18. Core Design Rules](part-4-production-engineering/18-core-design-rules.md)
 - [19. Reliability Patterns](part-4-production-engineering/19-reliability-patterns.md)
-- [20. Security (mapped to OWASP Top 10 for LLM Applications, 2025)](part-4-production-engineering/20-security.md)
+- [20. Security (mapped to the OWASP Top 10 for LLM Applications)](part-4-production-engineering/20-security.md)
 - [21. Evaluation Strategy](part-4-production-engineering/21-evaluation-strategy.md)
 - [22. Observability](part-4-production-engineering/22-observability.md)
 - [23. Deployment and Change Management](part-4-production-engineering/23-deployment-and-change-management.md)

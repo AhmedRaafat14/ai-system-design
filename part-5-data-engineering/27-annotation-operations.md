@@ -18,6 +18,10 @@ Labeling is an operations discipline, not a task you throw over a wall.
   native speakers of the target dialect, domain background where the
   content requires it, and a feedback channel from annotators back to the
   guideline owners.
+- **Machine-assist the loop**: pre-label with a model and have annotators
+  verify and correct (blind gold tasks guard against automation bias), and
+  use active learning to spend human effort on the uncertain, high-value
+  examples rather than the easy majority.
 - Vendors: run a paid pilot with your own QA before committing volume;
   contract for quality metrics and rework, not just throughput; keep
   ownership of guidelines, gold sets, and the delivered data.

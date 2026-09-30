@@ -28,9 +28,16 @@
 - **SFT with LoRA/QLoRA**: parameter-efficient adapters (train ~1% of
   weights, 4-bit base for QLoRA); the default for most teams. Full-parameter
   SFT only when adapters demonstrably cap quality.
-- **Preference tuning (DPO and successors)**: aligns behavior to
-  chosen-vs-rejected pairs without a full RLHF pipeline; use for tone,
-  safety posture, and judgment calls that are easier to rank than to write.
+- **Preference tuning (DPO, and successors KTO, ORPO, SimPO)**: aligns
+  behavior to chosen-vs-rejected pairs, or to binary keep/reject labels,
+  without a full RLHF pipeline; use for tone, safety posture, and judgment
+  calls that are easier to rank than to write. When writing preference labels
+  is the bottleneck, RLAIF has a judge model generate them.
+- **Reinforcement fine-tuning (RL with verifiable rewards, e.g. GRPO)**: for
+  narrow tasks where correctness is programmatically checkable (code, math,
+  extraction accuracy, policy compliance), train against a grader instead of
+  labeled outputs. Available as a managed offering; the right rung when a
+  gradeable reasoning task still misses after SFT and preference tuning.
 - **Continued pretraining**: for genuine language/domain gaps (e.g., an
   underrepresented dialect). Needs orders of magnitude more data and
   compute, and risks degrading general ability; a last resort.

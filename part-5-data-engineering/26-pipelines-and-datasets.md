@@ -6,16 +6,17 @@
   alike. Budget engineering time for parsing, deduplication, filtering,
   and PII scrubbing before budgeting for model work.
 - Version datasets like code: content hashes, lineage (source, transform,
-  date), changelogs, and reproducible builds. "Which data produced this
-  model/index" must be answerable in minutes.
+  date), changelogs, and reproducible builds (DVC, lakeFS, OpenLineage).
+  "Which data produced this model/index" must be answerable in minutes.
 - Decontaminate: keep eval sets strictly out of training and few-shot
   pools; leakage produces beautiful dashboards and broken products.
 - Define retention and deletion flows across every copy: raw store,
   processed sets, indexes, caches, fine-tuned weights trained on deleted
   data. Deletion requests must propagate.
-- Automate quality gates in the pipeline (schema checks, language ID,
-  length and dedup filters, toxicity/PII scans) and alert on distribution
-  drift in incoming data.
+- Classify each record's provenance at ingestion (human-authored,
+  human-edited, AI-generated, unknown), automate quality gates in the
+  pipeline (schema checks, language ID, length and dedup filters,
+  toxicity/PII scans), and alert on distribution drift in incoming data.
 
 ---
 

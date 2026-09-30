@@ -23,6 +23,10 @@
 - When a tool fails, feed a **compact** error summary back into context so
   the model can self-correct, with a counter that escalates to a human
   after N consecutive failures (12-Factor Agents, factor 9).
+- Hedge tail latency on idempotent read-only calls: issue a backup request
+  once the P95 deadline elapses and take the first response. Shed or queue
+  load when budgets or capacity are exceeded instead of letting latency
+  cascade.
 
 ### Fallback ladder
 
@@ -46,4 +50,4 @@ gateway layer instead of scattering provider logic through the codebase.
 
 ---
 
-**Prev:** [18. Core Design Rules](18-core-design-rules.md) · [Reading list](../README.md) · **Next:** [20. Security (mapped to OWASP Top 10 for LLM Applications, 2025)](20-security.md)
+**Prev:** [18. Core Design Rules](18-core-design-rules.md) · [Reading list](../README.md) · **Next:** [20. Security (mapped to the OWASP Top 10 for LLM Applications)](20-security.md)

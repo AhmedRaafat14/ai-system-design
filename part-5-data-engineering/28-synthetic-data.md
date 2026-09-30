@@ -4,15 +4,19 @@
 
 - Best uses: augmenting rare classes and edge cases, generating format
   examples for SFT, building [eval](../part-4-production-engineering/21-evaluation-strategy.md) variants, and distillation traces from a
-  strong teacher (check the teacher's terms of use).
+  strong teacher (check the teacher's terms of use; some model terms forbid
+  using outputs to train competing models).
 - **Never ship unverified synthetic data.** Filter with deterministic
   checks plus an LLM judge, then human-sample. Generation is cheap;
   verification is the actual work.
-- Keep real data in the mix and track the synthetic ratio. Training
-  recursively on model output degrades quality and diversity (the "model
-  collapse" failure mode documented in the literature).
+- Keep real data in the mix and track the synthetic ratio, but provenance
+  matters more than raw volume: even a small fraction of recursively
+  generated data degrades quality and diversity (the "model collapse"
+  failure mode documented in the literature), so curation and verification
+  beat ratio caps alone.
 - Label provenance: every synthetic example tagged as such, with generator
-  model and prompt version, so it can be excluded or reweighted later.
+  model and prompt version, so it can be excluded or reweighted later;
+  propagate content credentials (C2PA) where the source supports them.
 
 ---
 

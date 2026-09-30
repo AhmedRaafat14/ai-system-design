@@ -15,6 +15,11 @@ Implementation notes:
 - Model "contact a human" as a tool call that pauses the workflow and
   resumes on response (async approvals via Slack/email work well when state
   is checkpointed).
+- Frameworks realize this as an interrupt that pauses the run and persists
+  state to a checkpointer, then resumes from the caller's response, with
+  approval hooks that gate a tool call until a human confirms. Code before the
+  interrupt re-runs on resume, so keep side effects idempotent (upsert, not
+  insert).
 - Escalations must carry clean context: what was tried, what failed, what
   is pending. No raw transcript dumps.
 - Review queues + sampled human review for medium-risk output; 100% review

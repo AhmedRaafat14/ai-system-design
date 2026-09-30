@@ -15,6 +15,13 @@ Use multi-agent only when:
 - Tasks with tight shared context or many inter-step dependencies are a
   poor fit; keep those single-agent.
 
+A strong counter-argument cuts against multi-agent for most work: when subagents
+write to shared state, their separate contexts drift and conflict, and
+reconciling their output costs more than the parallelism saves. The dividing
+line is read-heavy versus write-heavy. Parallel subagents pay off on read-heavy,
+decomposable work like research and broad review; write-heavy tasks with one
+continuously changing state (coding especially) are better kept single-agent.
+
 Engineering lessons from production multi-agent systems:
 
 - The orchestrator must give subagents detailed task descriptions

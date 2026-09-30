@@ -35,7 +35,7 @@
 - [ ] Checkpoint promotion is eval-gated with rollback
 
 ### Security
-- [ ] Threat model covers [OWASP](../part-4-production-engineering/20-security.md) LLM Top 10 (2025)
+- [ ] Threat model covers the [OWASP](../part-4-production-engineering/20-security.md) LLM Top 10
 - [ ] Lethal trifecta broken by architecture for every agent
 - [ ] Model output treated as untrusted downstream; sanitized before render/execute
 - [ ] Tools least-privilege, risk-rated, high-risk gated by confirmation

@@ -7,9 +7,11 @@
 The OTel GenAI semantic conventions define a vendor-neutral schema
 (gen_ai.* attributes; inference, tool-execution, and agent spans) covering
 model, token usage, finish reasons, tool calls, and retrieval sources, and
-are supported across major platforms. Adopting them keeps your telemetry
-portable instead of locked to one vendor. The spec is still evolving
-quickly; pin the convention version you emit.
+are supported across major platforms (Langfuse, Arize Phoenix, LangSmith,
+Helicone). Adopting them keeps your telemetry portable instead of locked to
+one vendor. The conventions are still experimental and not yet stable:
+attribute names and span shapes can change between releases, so pin the
+convention version you emit.
 
 ### Propagate identifiers end to end
 

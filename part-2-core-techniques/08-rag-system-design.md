@@ -47,15 +47,20 @@ Practical notes:
 
 - Generate the chunk context with a cheap model + prompt caching; treat it
   as a one-time indexing cost.
+- Late chunking (embed the full document with a long-context model, then pool
+  each chunk's vector from those token embeddings) is a cheaper complement
+  that recovers cross-chunk context without a per-chunk LLM call; it composes
+  with contextual embeddings.
 - Reranking adds latency and cost; tune the candidate count for your SLO.
 - These numbers came from codebases, papers, and fiction. Measure on your
   own corpus before trusting any published gains.
 
 ### Know when NOT to use RAG
 
-If the whole knowledge base fits in roughly 200K tokens (about 500 pages),
-put it in the prompt and use prompt caching instead of building a retrieval
-pipeline. For code-like corpora, agentic just-in-time search (grep/glob
+If the whole knowledge base fits within your model's tested effective
+context, put it in the prompt and use prompt caching instead of building a
+retrieval pipeline; large context windows plus caching make this practical
+well past what a fixed page count would suggest. For code-like corpora, agentic just-in-time search (grep/glob
 style tools) often beats embedding pipelines. Static RAG is also the wrong
 tool for open-ended research tasks that need iterative exploration; that is
 what agentic retrieval loops are for.
@@ -71,8 +76,8 @@ Query → AuthZ/tenant filter → query classification and rewriting
 
 - Filter by tenant, role, and document ACL **before** anything reaches the
   model. Vector stores with weak access control are their own [OWASP](../part-4-production-engineering/20-security.md)
-  category now (LLM08: vector and embedding weaknesses, including index
-  poisoning and cross-tenant leakage).
+  risk (Vector and Embedding Weaknesses, including index poisoning and
+  cross-tenant leakage).
 - Chunk per document type; preserve headings, tables, source URLs,
   timestamps, ownership.
 - Query understanding earns its cost: classify (does this need retrieval at

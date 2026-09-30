@@ -23,8 +23,8 @@ For long-horizon tasks (Anthropic's context engineering guidance):
 1. **Compaction**: summarize older turns into a compressed state and reset.
    Tune the compaction prompt on real traces: maximize recall first, then
    trim. The lightest-touch form is **tool result clearing** (drop old raw
-   tool outputs, keep the record that the call happened). Server-side
-   compaction cut token use 84% in a 100-turn agent [eval](../part-4-production-engineering/21-evaluation-strategy.md) while letting the
+   tool outputs, keep the record that the call happened). This context
+   editing cut token use 84% in a 100-turn agent [eval](../part-4-production-engineering/21-evaluation-strategy.md) while letting the
    task finish.
 2. **Structured note-taking (agentic memory)**: the agent writes durable
    notes to external storage (a NOTES.md, a memory tool) and reads them
