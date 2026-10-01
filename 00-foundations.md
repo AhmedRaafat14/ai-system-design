@@ -1,4 +1,4 @@
-# AI Engineering Reference: System Design and Real-World Practices
+# Foundations
 
 A comprehensive reference for engineers, tech leads, and teams who build AI
 systems: from choosing an approach, through core techniques (prompting, RAG,

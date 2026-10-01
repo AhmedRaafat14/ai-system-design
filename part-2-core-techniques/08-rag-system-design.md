@@ -2,7 +2,7 @@
 
 *Part II. Core Techniques · [Reading list](../README.md)*
 
-### Ingestion pipeline
+## Ingestion pipeline
 
 ```text
 Source systems
@@ -31,7 +31,7 @@ Store metadata with every chunk:
 }
 ```
 
-### Contextual Retrieval (measured, not folklore)
+## Contextual Retrieval (measured, not folklore)
 
 The practitioner consensus (hybrid retrieval + reranking) is confirmed by
 Anthropic's published benchmarks. Baseline top-20 retrieval failure rate of
@@ -55,7 +55,7 @@ Practical notes:
 - These numbers came from codebases, papers, and fiction. Measure on your
   own corpus before trusting any published gains.
 
-### Know when NOT to use RAG
+## Know when NOT to use RAG
 
 If the whole knowledge base fits within your model's tested effective
 context, put it in the prompt and use prompt caching instead of building a
@@ -65,7 +65,7 @@ style tools) often beats embedding pipelines. Static RAG is also the wrong
 tool for open-ended research tasks that need iterative exploration; that is
 what agentic retrieval loops are for.
 
-### Retrieval pipeline requirements
+## Retrieval pipeline requirements
 
 ```text
 Query → AuthZ/tenant filter → query classification and rewriting

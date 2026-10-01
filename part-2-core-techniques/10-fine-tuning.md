@@ -2,7 +2,7 @@
 
 *Part II. Core Techniques · [Reading list](../README.md)*
 
-### When it helps
+## When it helps
 
 - Consistent format, style, tone, or domain phrasing that prompting cannot
   hold reliably.
@@ -15,7 +15,7 @@
   train a small student for the narrow route (check the teacher's terms of
   use first).
 
-### When it does not
+## When it does not
 
 - Fresh or frequently changing facts: that is retrieval's job, and a tuned
   model with stale knowledge fails confidently.
@@ -23,7 +23,7 @@
 - As the first resort: exhaust prompting + retrieval and keep the [eval](../part-4-production-engineering/21-evaluation-strategy.md)
   gap as your justification.
 
-### Methods, roughly in order of cost
+## Methods, roughly in order of cost
 
 - **SFT with LoRA/QLoRA**: parameter-efficient adapters (train ~1% of
   weights, 4-bit base for QLoRA); the default for most teams. Full-parameter
@@ -42,7 +42,7 @@
   underrepresented dialect). Needs orders of magnitude more data and
   compute, and risks degrading general ability; a last resort.
 
-### Process discipline
+## Process discipline
 
 - Data quality beats volume: a few thousand excellent, deduplicated,
   decontaminated examples routinely beat tens of thousands of scraped ones.

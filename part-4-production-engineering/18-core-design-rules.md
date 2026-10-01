@@ -2,7 +2,7 @@
 
 *Part IV. Production Engineering · [Reading list](../README.md)*
 
-### Model every workflow as an explicit state machine
+## Model every workflow as an explicit state machine
 
 Represent each request as state that lives outside the model:
 
@@ -38,7 +38,7 @@ and 12-Factor Agents:
   "request approval" as a tool call that pauses the loop (possibly for
   hours) and resumes when the answer arrives.
 
-### Enforce hard execution budgets
+## Enforce hard execution budgets
 
 Never let a loop run unbounded. Unbounded consumption is an [OWASP](20-security.md) Top 10
 risk (Unbounded Consumption), not just a cost problem: it is also a denial-of-wallet attack
@@ -55,14 +55,19 @@ MAX_WALL_TIME_SECONDS = 30
 On budget exhaustion: stop safely, return the best partial result or a
 deterministic fallback, or escalate to a human. Never continue silently.
 
-### Make side effects idempotent
+## Make side effects idempotent
 
 Any action that changes the outside world (email, tickets, CRM updates,
 payments, bookings, webhooks) must be safe to retry:
 
 ```text
-idempotency_key = hash(user_id + operation_type + business_object_id)
+idempotency_key = sha256("{user_id}|{operation_type}|{business_object_id}|{intent_id}")
 ```
+
+Use a stable hash, not a language's per-process `hash()` (which is randomized
+across runs, so replicas would disagree), and include a unique intent id so
+distinct actions on the same object get distinct keys. Reuse a key only when
+retrying that same action.
 
 Use a two-phase pattern for high-risk actions:
 
@@ -73,7 +78,7 @@ prepare -> validate -> confirm (human if consequential) -> commit -> record
 Never let model output directly authorize an irreversible action. Model
 output selects the action; deterministic, authenticated code executes it.
 
-### Keep business rules in code
+## Keep business rules in code
 
 If a rule can be written as deterministic logic (pricing, eligibility,
 routing thresholds, permission checks), implement it in code and let the

@@ -26,7 +26,7 @@ from building tools for Claude:
 - Iterate on tool descriptions using real transcripts; test tools with the
   agent in the loop, not just unit tests.
 
-### Scaling to many tools
+## Scaling to many tools
 
 - **Expose tools as code APIs and let the agent write code to call them**
   ("code mode"): the model imports only the definitions it needs and passes
@@ -38,7 +38,7 @@ from building tools for Claude:
 - **Design for parallel tool calls.** The model may invoke several tools in one
   turn, so keep concurrently-run tools independent and idempotent.
 
-### Tool contract
+## Tool contract
 
 ```json
 {
@@ -57,7 +57,7 @@ from building tools for Claude:
 }
 ```
 
-### Tool rules
+## Tool rules
 
 - Minimum required permissions per tool; separate read tools from write
   tools; rate each tool's risk (low/medium/high) and gate high-risk tools

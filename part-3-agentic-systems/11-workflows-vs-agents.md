@@ -12,7 +12,7 @@ Level 3: Agent (model directs its own loop and tool use)
 Level 4: Multi-agent (orchestrator + parallel subagents)
 ```
 
-### Workflow patterns (Anthropic, "Building Effective Agents")
+## Workflow patterns (Anthropic, "Building Effective Agents")
 
 | Pattern | Use when |
 |---|---|
@@ -22,13 +22,13 @@ Level 4: Multi-agent (orchestrator + parallel subagents)
 | Orchestrator-workers | Subtasks cannot be predicted upfront; a lead model delegates |
 | Evaluator-optimizer | Clear evaluation criteria exist and iteration adds value |
 
-### When agents are justified
+## When agents are justified
 
 - The path cannot be hardcoded, but progress can be verified
 - The task is valuable enough to pay for exploration (tokens, latency)
 - You can sandbox execution and define stopping conditions
 
-### Code as the orchestration layer
+## Code as the orchestration layer
 
 For agents juggling many tools, having the model write and run code that calls
 those tools in a sandbox often beats emitting one tool call per turn: loops,
@@ -36,7 +36,7 @@ branching, and data passing stay in code instead of the context window, which
 cuts tokens and round-trips. Reach for it when tools compose and execution can
 be sandboxed.
 
-### Framework caution
+## Framework caution
 
 Frameworks (LangGraph, CrewAI, etc.) speed up the start but add abstraction
 layers that obscure prompts and control flow, making debugging harder.

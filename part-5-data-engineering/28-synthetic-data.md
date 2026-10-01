@@ -10,10 +10,11 @@
   checks plus an LLM judge, then human-sample. Generation is cheap;
   verification is the actual work.
 - Keep real data in the mix and track the synthetic ratio, but provenance
-  matters more than raw volume: even a small fraction of recursively
-  generated data degrades quality and diversity (the "model collapse"
-  failure mode documented in the literature), so curation and verification
-  beat ratio caps alone.
+  matters more than raw volume. Training on recursively generated data can
+  degrade quality and diversity (the "model collapse" failure mode documented
+  in the literature), though the outcome depends on how real and synthetic
+  data are mixed and sampled, so lean on curation and verification rather than
+  ratio caps alone.
 - Label provenance: every synthetic example tagged as such, with generator
   model and prompt version, so it can be excluded or reweighted later;
   propagate content credentials (C2PA) where the source supports them.

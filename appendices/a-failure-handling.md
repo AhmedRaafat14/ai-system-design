@@ -15,7 +15,7 @@
 | Output schema failure | One retry with the error included, then deterministic fallback |
 | Guardrail violation detected | Block, log, and route per policy; never "fix and forward" silently |
 | Provider outage | Gateway fallback ladder (§19); degraded mode with honest messaging |
-| Injection suspected | Contain: freeze privileged tools for the session, log full trace, review |
+| Injection suspected | Contain: freeze privileged tools for the session, log a redacted trace, review |
 | Low STT confidence / unintelligible audio (voice) | Ask to repeat once, then offer human handoff |
 
 ---

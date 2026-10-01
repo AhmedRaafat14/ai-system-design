@@ -2,7 +2,7 @@
 
 *Part IV. Production Engineering · [Reading list](../README.md)*
 
-### Timeouts at every boundary
+## Timeouts at every boundary
 
 | Layer | Examples |
 |---|---|
@@ -13,7 +13,7 @@
 | Tools | Per-tool deadline |
 | Workflow | End-to-end wall-clock deadline |
 
-### Retries
+## Retries
 
 - Retry only transient, safe failures: network timeouts, provider 5xx,
   rate-limit responses. Exponential backoff with jitter, capped attempts,
@@ -28,7 +28,7 @@
   load when budgets or capacity are exceeded instead of letting latency
   cascade.
 
-### Fallback ladder
+## Fallback ladder
 
 ```text
 Primary model unavailable
@@ -42,7 +42,7 @@ Fallback output must still pass schema, safety, and grounding checks. Test
 degraded modes deliberately (provider outage game days), do not discover
 them in production.
 
-### Model gateway
+## Model gateway
 
 Centralize routing, provider fallback, key management, pinned model
 versions, prompt caching, circuit breakers, and per-tenant quotas in one

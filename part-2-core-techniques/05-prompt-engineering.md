@@ -11,7 +11,9 @@
 - **Reasoning**: for hard tasks with non-reasoning models, ask for explicit
   steps before the answer. With reasoning models, do not force chain-of-
   thought in the prompt; control effort via the model's reasoning settings
-  (extended, interleaved, and adaptive thinking) and spend the tokens where
+  (Anthropic exposes these as extended, interleaved, and adaptive thinking;
+  other providers have their own reasoning-effort controls) and spend the
+  tokens where
   evals show they pay. For agentic tool loops, prefer adaptive thinking over a
   fixed budget, and interleaved thinking so the model can reconsider between
   tool calls.

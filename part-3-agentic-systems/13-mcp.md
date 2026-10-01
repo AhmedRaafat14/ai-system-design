@@ -14,11 +14,15 @@ What the protocol standardizes:
 - **Three primitives:** tools (model-invoked actions), resources (readable
   context the client pulls in), and prompts (reusable templates the server
   offers).
-- **Transport:** an HTTP streaming transport that operates statelessly, so a
-  server holds no per-connection state and scales horizontally; any cross-call
-  state passes as explicit arguments.
-- **Auth:** OAuth-based authorization, with each server acting as a resource
-  server and access tokens bound to the specific server they were issued for.
+- **Transport:** local integrations use a stdio transport; remote ones use a
+  streamable HTTP transport that returns either a single JSON response or an
+  SSE stream, and operates statelessly, so a server holds no per-connection
+  state and scales horizontally, with any cross-call state passed as explicit
+  arguments.
+- **Auth:** authorization is optional and applies to the HTTP transport, where
+  servers act as OAuth resource servers and access tokens are bound to the
+  specific server they were issued for. A stdio server takes its credentials
+  from the environment instead.
 
 Production rules:
 

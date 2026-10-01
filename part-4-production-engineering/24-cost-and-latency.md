@@ -16,8 +16,9 @@
 - Stream tokens for perceived latency; parallelize independent tool calls;
   cap max output tokens per route.
 - **Semantic caching**: fine for public FAQs; dangerous for personalized or
-  authorized content. Include auth scope and tenant in the cache key or
-  skip it.
+  authorized content. When the response varies by user, include the tenant,
+  the auth scope, and the user principal in the cache key, or skip it. Tenant
+  and scope alone can still let two users share an entry.
 - Track spend per route, per tenant, per feature, and alert on anomalies
   (see [Unbounded Consumption](20-security.md)).
 

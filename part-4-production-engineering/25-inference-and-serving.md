@@ -4,7 +4,7 @@
 
 Only relevant if §2 pointed you at [self-hosting](../part-1-decisions/02-api-vs-self-hosting.md); skip otherwise.
 
-### Serving stack
+## Serving stack
 
 - Use a production inference engine (vLLM, SGLang, TensorRT-LLM class), not
   raw transformers loops. The wins that matter: **continuous batching**
@@ -23,7 +23,7 @@ Only relevant if §2 pointed you at [self-hosting](../part-1-decisions/02-api-vs
   quantization roughly quarters that. Then add KV cache headroom for your
   target batch and context.
 
-### Quantization
+## Quantization
 
 - Weight quantization (8-bit, 4-bit: AWQ/GPTQ class, FP8 and FP4 on
   supported hardware) is the standard cost lever. Quality loss is usually small on
@@ -31,7 +31,7 @@ Only relevant if §2 pointed you at [self-hosting](../part-1-decisions/02-api-vs
   languages**; measure on your own [evals](21-evaluation-strategy.md) per language before shipping.
 - KV cache quantization buys concurrency; same rule: measure.
 
-### Latency levers
+## Latency levers
 
 - Separate the two metrics: **TTFT** (time to first token, dominated by
   prefill) and **TPOT/ITL** (per-token decode speed). Different levers move
@@ -42,7 +42,7 @@ Only relevant if §2 pointed you at [self-hosting](../part-1-decisions/02-api-vs
 - Throughput and latency trade against each other through batch size;
   define SLOs per route and tune deliberately.
 
-### Ops realities
+## Ops realities
 
 - GPU autoscaling is slow (model load takes minutes): plan capacity with
   headroom and queue-depth alerts instead of assuming elastic scale-out.

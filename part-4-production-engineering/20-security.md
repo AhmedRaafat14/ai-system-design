@@ -15,7 +15,7 @@
 | Misinformation | Grounding, citations, abstention, human review for high-stakes output |
 | Unbounded consumption | Budgets, quotas, per-run circuit breakers, anomaly alerts |
 
-### Prompt injection: design for containment
+## Prompt injection: design for containment
 
 "Separate instructions from data" is necessary but NOT sufficient; models
 cannot reliably distinguish injected instructions inside data, and

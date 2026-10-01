@@ -5,7 +5,7 @@
 Anthropic's multi-agent research system (orchestrator + parallel subagents)
 outperformed a single-agent setup by 90.2% on their internal research [eval](../part-4-production-engineering/21-evaluation-strategy.md),
 but at roughly 15x the tokens of a normal chat (single agents already run
-about 4x). Token usage alone explained about 80% of performance variance.
+about 4x). In Anthropic's BrowseComp analysis, token usage alone explained about 80% of the performance variance, a separate measurement from the 90.2% research-eval result above.
 
 Use multi-agent only when:
 

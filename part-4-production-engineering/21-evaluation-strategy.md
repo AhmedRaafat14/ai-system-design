@@ -2,7 +2,7 @@
 
 *Part IV. Production Engineering · [Reading list](../README.md)*
 
-### Start small, start real
+## Start small, start real
 
 Do not wait for a perfect benchmark. Anthropic's research team started with
 about 20 representative queries and hand inspection; small-n evals with real
@@ -27,7 +27,7 @@ Every example defines expected behavior:
 }
 ```
 
-### Layer the graders
+## Layer the graders
 
 1. **Deterministic checks**: schema validity, citation presence, banned
    content, latency, cost. Cheap, run everywhere.
@@ -45,14 +45,14 @@ faithfulness, answer relevance, and context precision and recall; Braintrust,
 LangSmith, and Phoenix add managed datasets, dashboards, and trace-linked
 scoring.
 
-### Agent-specific evaluation
+## Agent-specific evaluation
 
 Judge the **end state** (did the task actually get done in the environment)
 and the **trajectory** (tool choices, budget use, safety of intermediate
 actions), while allowing multiple valid paths to the goal. Turn-by-turn
 similarity to a golden transcript is the wrong metric for agents.
 
-### Red teaming
+## Red teaming
 
 Adversarial testing is part of evaluation, not a one-time audit: injection
 attempts through every untrusted channel (documents, web content, tool
@@ -60,7 +60,7 @@ output, memory writes), permission-boundary probes, jailbreak suites, and
 domain-specific abuse cases. Automate replay of every known attack as a
 regression test and re-run on every model or prompt change.
 
-### Run evals on every meaningful change
+## Run evals on every meaningful change
 
 Prompts, model or provider version, retrieval/index config, [embedding](../part-2-core-techniques/09-embeddings-and-vectors.md)
 model, chunking logic, tool schemas or permissions, workflow transitions,
